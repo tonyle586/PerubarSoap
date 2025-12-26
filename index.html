@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perubar Soap - Thông Tin Sản Phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Tông màu lấy từ video và ảnh: Cam & Trắng */
+            --brand-orange: #f97316; /* Cam rực rỡ */
+            --brand-orange-dark: #ea580c; 
+            --brand-bg-light: #fff7ed; /* Màu kem cam rất nhạt */
+            --text-heading: #1e293b; /* Xanh đen đậm cho chữ */
+            --text-body: #475569;
+            --icon-blue: #38bdf8; /* Giữ màu xanh cho icon nước/khiên như video */
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--text-body);
+            background-color: #ffffff;
+        }
+
+        .text-heading { color: var(--text-heading); }
+        .text-orange { color: var(--brand-orange); }
+        .bg-orange-light { background-color: var(--brand-bg-light); }
+        
+        /* Button Style - Gradient Cam */
+        .btn-primary {
+            background: linear-gradient(to right, #f97316, #ea580c);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--brand-orange);
+            color: var(--brand-orange);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: var(--brand-orange);
+            color: white;
+        }
+
+        /* Nav Link Hover */
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--brand-orange);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover { color: var(--brand-orange); }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Section Title Underline */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Ingredient Tag Style from Video */
+        .ingredient-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            background-color: #fff;
+            border: 1px solid #fdba74; /* Viền cam nhạt */
+            border-radius: 9999px;
+            color: #c2410c; /* Chữ cam đậm */
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .ingredient-tag:hover {
+            background-color: #fff7ed;
+            border-color: #f97316;
+            transform: translateY(-1px);
+        }
+
+        .hero-blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300 border-b border-orange-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo style updated -->
+            <a href="#" class="text-2xl font-extrabold text-orange tracking-tight flex items-center gap-2">
+                PERUBAR SOAP
+            </a>
+            
+            <nav class="hidden md:flex gap-8 text-slate-600">
+                <a href="#about" class="nav-link">Trang chủ</a>
+                <a href="#benefits" class="nav-link">Công dụng</a>
+                <a href="#ingredients" class="nav-link">Thành phần</a>
+                <a href="#distributor" class="nav-link">Thông tin</a>
+            </nav>
+            
+            <a href="#contact" class="hidden md:inline-block px-6 py-2 btn-primary rounded-full font-bold text-sm uppercase tracking-wide">
+                Liên hệ
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl text-orange">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 overflow-hidden relative bg-orange-light">
+        <!-- Blobs (Yellow/Orange) -->
+        <div class="hero-blob bg-orange-300 w-96 h-96 top-0 right-0 rounded-full mix-blend-multiply"></div>
+        <div class="hero-blob bg-yellow-200 w-96 h-96 bottom-0 left-0 rounded-full mix-blend-multiply"></div>
+        
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
+            <div class="md:w-1/2 space-y-6 animate-fade-in-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-heading">
+                    Xà phòng tắm dùng cho <span class="text-orange">da dầu và mụn</span>
+                </h1>
+                
+                <p class="text-lg text-slate-600 leading-relaxed font-medium">
+                    Sản phẩm giúp làm sạch da nhờn, hạn chế mụn, mang lại vẻ sáng mịn cho làn da.
+                </p>
+                
+                <div class="p-4 bg-white/60 backdrop-blur rounded-lg border border-orange-100 inline-block">
+                     <p class="text-sm text-slate-500 italic">
+                        <i class="fa-solid fa-circle-check text-orange mr-2"></i>Số công bố: 280533/25/CBMP-QLD
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="tel:0938414466" class="px-8 py-4 btn-primary rounded-full font-bold shadow-lg text-center">
+                        <i class="fa-solid fa-phone mr-2"></i>Hotline 0938 414 466
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center relative">
+                <!-- Product Image Container -->
+                <div class="relative w-full max-w-lg">
+                    <!-- Decor ring behind image -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-orange-200 rounded-full opacity-50"></div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-white rounded-full shadow-2xl shadow-orange-100"></div>
+                    
+                    <img src="xpyk.png" alt="Perubar Soap Box" class="relative z-10 w-full h-auto object-contain transform hover:scale-105 transition-transform duration-500 drop-shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-heading mb-6">Công Dụng</h2>
+                <div class="w-24 h-1 bg-orange-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 hover:border-orange-200 transition-all text-center group h-full">
+                    <div class="w-20 h-20 bg-blue-50 text-blue-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-heading mb-3">Làm Sạch Da Nhờn</h3>
+                    <p class="text-slate-500 leading-relaxed">Giúp loại bỏ bã nhờn dư thừa mà không gây khô da.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 hover:border-orange-200 transition-all text-center group h-full">
+                    <div class="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-heading mb-3">Hạn Chế Mụn</h3>
+                    <p class="text-slate-500 leading-relaxed">Hỗ trợ ngăn ngừa sự hình thành của mụn mới.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 hover:border-orange-200 transition-all text-center group h-full">
+                    <div class="w-20 h-20 bg-yellow-50 text-yellow-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-heading mb-3">Da Sáng Mịn</h3>
+                    <p class="text-slate-500 leading-relaxed">Mang lại vẻ tươi sáng, mịn màng cho làn da sau mỗi lần sử dụng.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredients Section (Tags Style) -->
+    <section id="ingredients" class="py-20 bg-orange-light/50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-extrabold text-heading mb-10">Thành Phần</h2>
+            
+            <div class="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-sm border border-orange-100">
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="ingredient-tag">Soap Noodles</span>
+                    <span class="ingredient-tag">Sulphonated Surfactant Blend</span>
+                    <span class="ingredient-tag">Talc</span>
+                    <span class="ingredient-tag">Sodium Lauryl Sulfate</span>
+                    <span class="ingredient-tag">Glycerin</span>
+                    <span class="ingredient-tag">Titanium Dioxide</span>
+                    <span class="ingredient-tag">Disodium Edetate</span>
+                    <span class="ingredient-tag">Butylated Hydroxytoluene</span>
+                    <span class="ingredient-tag">Citric Acid</span>
+                    <span class="ingredient-tag">Methylparapen</span>
+                    <span class="ingredient-tag">Water</span>
+                    <span class="ingredient-tag">Propylparaben</span>
+                </div>
+                
+                <div class="mt-8 pt-8 border-t border-slate-100 grid md:grid-cols-2 gap-6 text-left">
+                     <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50">
+                        <div class="text-orange text-xl"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+                        <div>
+                            <p class="font-bold text-heading text-sm uppercase mb-1">Dạng bào chế</p>
+                            <p class="text-slate-600">Xà phòng bánh (Soap bar)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50">
+                        <div class="text-orange text-xl"><i class="fa-solid fa-bullseye"></i></div>
+                        <div>
+                            <p class="font-bold text-heading text-sm uppercase mb-1">Chỉ định</p>
+                            <p class="text-slate-600">Dùng cho da dầu và mụn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section (Columns Style) -->
+    <section id="distributor" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center text-heading mb-16">Thông Tin Sản Phẩm</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12 relative">
+                <!-- Vertical Divider lines for desktop -->
+                <div class="hidden md:block absolute top-10 bottom-10 left-1/3 w-px bg-slate-200"></div>
+                <div class="hidden md:block absolute top-10 bottom-10 right-1/3 w-px bg-slate-200"></div>
+
+                <!-- Manufacturer -->
+                <div class="space-y-4">
+                    <h3 class="text-orange font-bold text-sm tracking-widest uppercase mb-4">Nhà Sản Xuất</h3>
+                    <p class="font-bold text-heading text-xl">LANARK LABORATORIES</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-orange mr-2"></i>Near Electric Sub Station Gondpur, Paonta Sahib-173025, Distt, Sirmour (H.P), India
+                    </p>
+                    <span class="inline-block px-3 py-1 bg-slate-100 text-slate-500 text-xs font-bold rounded">MADE IN INDIA</span>
+                </div>
+
+                <!-- Importer -->
+                <div class="space-y-4">
+                    <h3 class="text-orange font-bold text-sm tracking-widest uppercase mb-4">Nhập Khẩu Bởi</h3>
+                    <p class="font-bold text-heading text-xl">CÔNG TY TNHH SÁIMEDS</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-orange mr-2"></i>348C Điện Biên Phủ, Phường Gia Định, TP. Hồ Chí Minh
+                    </p>
+                    <div class="text-sm text-slate-500">
+                        <p class="mb-1"><span class="font-semibold text-slate-700">MST:</span> 0315647954</p>
+                        <p><span class="font-semibold text-slate-700">Hotline:</span> 0777 088 537</p>
+                    </div>
+                </div>
+
+                <!-- Distributor -->
+                <div class="space-y-4">
+                    <h3 class="text-orange font-bold text-sm tracking-widest uppercase mb-4">Phân Phối Bởi</h3>
+                    <p class="font-bold text-heading text-xl">CÔNG TY TNHH DƯỢC PHẨM NGÂN CHÂU</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-orange mr-2"></i>89 Đường số 9, Phường Chánh Hưng, TP. Hồ Chí Minh
+                    </p>
+                    <div class="text-sm text-slate-500">
+                        <p class="mb-1"><span class="font-semibold text-slate-700">MST:</span> 0315844293</p>
+                        <p class="text-orange font-bold text-lg mt-2"><i class="fa-solid fa-phone mr-2"></i>0938 414 466</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updated Footer (Informational) -->
+    <footer id="contact" class="bg-slate-900 text-slate-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 border-b border-slate-800 pb-8">
+                <!-- Col 1: Brand Info -->
+                <div class="col-span-1 lg:col-span-2">
+                    <a href="#" class="text-2xl font-bold text-white tracking-tight flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-leaf text-white"></i>
+                        PERUBAR
+                    </a>
+                   
+                   <p class="text-xs text-slate-500">Thông tin cảnh báo: Đọc kỹ hướng dẫn sử dụng trước khi dùng.</p>
+                </div>
+                
+                <!-- Col 2: Distributor -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Liên Hệ Phân Phối</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot mt-1 text-slate-500"></i>
+                            <span>89 Đường số 9, P. Chánh Hưng, TP.HCM</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-slate-500"></i>
+                            <a href="tel:0938414466" class="hover:text-white transition-colors">0938 414 466</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Importer -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Liên Hệ Nhập Khẩu</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot mt-1 text-slate-500"></i>
+                            <span>348C Điện Biên Phủ, P. Gia Định, TP.HCM</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-slate-500"></i>
+                            <a href="tel:0777088537" class="hover:text-white transition-colors">0777 088 537</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center text-sm text-slate-600">
+                &copy; 2024 Perubar Soap Information Page.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
